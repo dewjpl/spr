@@ -14,7 +14,7 @@ class RentAcar:
         availability = self.check_availability(start_hour, end_hour)
 
         if availability:
-            availability["booked"]({
+            availability["booked"].append({
                 "start_hour": start_hour,
                 "end_hour": end_hour,
                 "customer_name": customer_name
