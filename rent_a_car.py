@@ -14,7 +14,7 @@ class RentAcar:
         availability = self.check_availability(start_hour, end_hour)
 
         if availability:
-            availability["booked"].append({
+            availability["booked"]({
                 "start_hour": start_hour,
                 "end_hour": end_hour,
                 "customer_name": customer_name
@@ -36,4 +36,22 @@ class RentAcar:
                 return car
         
         return None
+    
+def main():
+    rent_a_car = RentAcar()
 
+    while True:
+        command = input("> ")
+
+        if command.startswith("add_car"):
+            plate_number = command.split(" ")
+            rent_a_car.add_car(plate_number)
+        elif command.startswith("book_car"):
+            start_hour, end_hour, customer_name = command.split(" ")
+            rent_a_car.book_car(int(start_hour), int(end_hour), customer_name)
+        elif command == "quit":
+            break
+
+
+if __name__ == "__main__":
+    main()
